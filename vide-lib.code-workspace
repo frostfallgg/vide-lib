@@ -1,0 +1,55 @@
+{
+	"folders": [
+		{
+			"name": "Vide Library",
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"files.eol": "\n",
+		"eslint.run": "onType",
+		"eslint.format.enable": true,
+		"terminal.integrated.profiles.windows": {
+			"PowerShell": {
+				"source": "PowerShell",
+				"icon": "terminal-powershell",
+				"env": {
+					"PATH": "${env:PATH};F:/Projects/Games/roblox-prod/@tooling/RBXDevCLI/RBXDevCLI/TypeScriptCLI/bin/Release/net8.0;F:/Projects/Games/roblox-prod/@scripts/package_builder/src"
+				}
+			}
+		},
+		"[python]": {
+			"diffEditor.ignoreTrimWhitespace": false,
+			"editor.formatOnType": true,
+			"editor.wordBasedSuggestions": "off",
+			"editor.codeActionsOnSave": {},
+		},
+		"[typescript]": {
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.removeUnusedImports": "always",
+				"source.fixAll.eslint": "always",
+				"source.addMissingImports.ts": "always"
+			},
+		},
+		"[typescriptreact]": {
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+			"editor.formatOnSave": true,
+			"editor.codeActionsOnSave": {
+				"source.removeUnusedImports": "always",
+				"source.fixAll.eslint": "always",
+				"source.addMissingImports.ts": "always"
+			},
+		},
+		"javascript.experimental.updateImportsOnPaste": true,
+		"typescript.experimental.updateImportsOnPaste": true,
+		"typescript.preferences.preferTypeOnlyAutoImports": true,
+		"explorer.excludeGitIgnore": true,
+		"explorer.autoRevealExclude": {
+			"**/out": true
+		},
+		"eslint.useFlatConfig": true
+	}
+}
