@@ -1,24 +1,11 @@
 {
   "name": "@frostfall/vide-lib",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "out/init.luau",
-  "scripts": {
-    "build": "rbxtsc --type=package",
-    "watch": "rbxtsc -w",
-    "prepublishOnly": "npm run build"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "types": "out/index.d.ts",
-  "files": [
-    "out",
-    "!**/*.tsbuildinfo"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
     "@rbxts/compiler-types": "^3.0.0-types.0",
@@ -41,5 +28,13 @@
     "@rbxts/ui-labs": "^2.3.0",
     "@rbxts/vide": "^0.5.0",
     "@rbxts/vide-charm": "^0.1.1"
-  }
+  },
+  "types": "out/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "out",
+    "!**/*.tsbuildinfo"
+  ]
 }

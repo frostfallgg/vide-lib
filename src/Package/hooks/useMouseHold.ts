@@ -1,10 +1,7 @@
-import { cleanup, effect, source, type Source } from "@rbxts/vide";
+import { cleanup, effect, source, type Derivable, type Source } from "@rbxts/vide";
 import { useMouseHover } from "./useMouseHover";
 
-export function useMouseHold<T extends GuiObject>(
-	ref: Source<T | undefined>,
-	isEnabled: boolean | Source<boolean> = true,
-) {
+export function useMouseHold<T extends GuiObject>(ref: Source<T | undefined>, isEnabled: Derivable<boolean> = true) {
 	const isHolding = source(false);
 	const isHovered = useMouseHover(ref, isEnabled);
 

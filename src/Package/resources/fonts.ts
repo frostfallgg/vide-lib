@@ -1,7 +1,3 @@
-import Vide from "@rbxts/vide";
-
-Vide;
-
 export namespace Fonts {
 	export const robotoSlab = {
 		regular: Font.fromId(12187368625, Enum.FontWeight.Regular),

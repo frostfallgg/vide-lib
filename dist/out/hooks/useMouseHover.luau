@@ -1,6 +1,6 @@
 -- Compiled with roblox-ts v3.0.0
-local TS = _G[script]
-local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
+local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
+local _vide = TS.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "vide", "src")
 local cleanup = _vide.cleanup
 local effect = _vide.effect
 local source = _vide.source
