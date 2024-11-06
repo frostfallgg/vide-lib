@@ -1,10 +1,10 @@
 -- Compiled with roblox-ts v3.0.0
-local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
-local _vide = TS.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "vide", "src")
+local TS = _G[script]
+local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local Vide = _vide
 local derive = _vide.derive
 local read = _vide.read
-local ShapeButton = TS.import(script, game:GetService("ReplicatedStorage"), "Package", "components", "shape-button").ShapeButton
+local ShapeButton = TS.import(script, script.Parent.Parent, "shape-button").ShapeButton
 local THUMB_COLOR
 local function Scrollbar(_param)
 	local width = _param.width

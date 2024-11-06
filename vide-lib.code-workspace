@@ -38,8 +38,8 @@
 		},
 		"typescript.preferences.preferTypeOnlyAutoImports": true,
 		"explorer.excludeGitIgnore": true,
-		"explorer.autoRevealExclude": {
-			"**/out": true
-		},
+		// "explorer.autoRevealExclude": {
+		// 	"**/out": true
+		// },
 	}
 }

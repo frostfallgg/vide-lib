@@ -1,6 +1,6 @@
 -- Compiled with roblox-ts v3.0.0
-local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
-local Vide = TS.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "vide", "src")
+local TS = _G[script]
+local Vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local function ContentsContainer(_param)
 	local children = _param.children
 	local position = _param.position

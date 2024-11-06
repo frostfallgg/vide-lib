@@ -1,12 +1,12 @@
 -- Compiled with roblox-ts v3.0.0
-local TS = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
-local _vide = TS.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "vide", "src")
+local TS = _G[script]
+local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local Vide = _vide
 local derive = _vide.derive
 local read = _vide.read
 local Show = _vide.Show
-local useSource = TS.import(script, game:GetService("ReplicatedStorage"), "Package", "hooks", "useSource").useSource
-local UISlices = TS.import(script, game:GetService("ReplicatedStorage"), "Package", "resources", "images").UISlices
+local useSource = TS.import(script, script.Parent.Parent, "hooks", "useSource").useSource
+local UISlices = TS.import(script, script.Parent.Parent, "resources", "images").UISlices
 local function ShapeButton(_param)
 	local children = _param.children
 	local border = _param.border
