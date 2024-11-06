@@ -6,7 +6,6 @@
 		}
 	],
 	"settings": {
-		"github.copilot.editor.enableAutoCompletions": true,
 		"typescript.tsdk": "node_modules/typescript/lib",
 		"files.eol": "\n",
 		"biome.enabled": true,

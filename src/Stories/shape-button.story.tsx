@@ -28,10 +28,6 @@ const story = {
 			}
 		});
 
-		const onClick = () => {
-			counter(counter() + 1);
-		};
-
 		return (
 			<ShapeButton
 				shape={props.controls.Shape}
@@ -42,7 +38,7 @@ const story = {
 					MouseEnter: () => isHovered(true),
 					MouseLeave: () => isHovered(false),
 				}}
-				onClick={onClick}
+				onClick={() => counter(counter() + 1)}
 				color={bgColor}
 			>
 				<textlabel
