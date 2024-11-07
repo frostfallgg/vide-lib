@@ -1,8 +1,12 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 
-type FrameProps = InstanceAttributes<Frame> & SettingsProps;
+interface FrameProps {
+	children?: Node;
+	native?: InstanceAttributes<Frame>;
+	settings?: SettingsProps;
+}
 
 /**
  * Frame wrapper.
@@ -12,8 +16,8 @@ type FrameProps = InstanceAttributes<Frame> & SettingsProps;
  */
 export function Frame(props: FrameProps) {
 	return (
-		<frame {...props}>
-			<Settings {...props} />
+		<frame {...props.native}>
+			<Settings {...props.settings} />
 			{props.children}
 		</frame>
 	);
