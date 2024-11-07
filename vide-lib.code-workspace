@@ -41,5 +41,14 @@
 		"explorer.autoRevealExclude": {
 			"**/out": true
 		},
+		//"editor.fontFamily": "Monaspace Neon",
+		"editor.fontFamily": "Iosevka",
+		//"editor.fontFamily": "Jet Brains Mono",
+		//"editor.fontFamily": "Monego Ligatures",
+		//"editor.fontFamily": "Monaco",
+		//"editor.fontFamily": "Victor Mono",
+		"editor.fontLigatures": true,
+		"editor.fontWeight": "300",
+		"editor.mouseWheelZoom": true,
 	}
 }
