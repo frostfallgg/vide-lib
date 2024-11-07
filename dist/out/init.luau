@@ -13,8 +13,17 @@ end
 for _k, _v in TS.import(script, script, "hooks", "useMouseHold") or {} do
 	exports[_k] = _v
 end
-exports.ShapeFrame = TS.import(script, script, "components", "shape-frame").ShapeFrame
+for _k, _v in TS.import(script, script, "hooks", "usePx") or {} do
+	exports[_k] = _v
+end
+for _k, _v in TS.import(script, script, "hooks", "animation", "useAutoMotion") or {} do
+	exports[_k] = _v
+end
 for _k, _v in TS.import(script, script, "components", "scrollable-frame", "scrollable-frame") or {} do
+	exports[_k] = _v
+end
+exports.ShapeFrame = TS.import(script, script, "components", "shape-frame").ShapeFrame
+for _k, _v in TS.import(script, script, "components", "shape-button") or {} do
 	exports[_k] = _v
 end
 return exports

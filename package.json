@@ -1,12 +1,13 @@
 {
-  "name": "@frostfall/vide-lib",
+  "name": "frostfall/vide-lib",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": ".\\tools\\package_tools.exe copy_dist",
+    "build": ".\\tools\\frostfall-dev-tool.exe build_package",
     "updateBuild": ".\\tools\\package_tools.exe update_dist_package",
-    "watch": "rbxtsc -w"
+    "watch": "rbxtsc -w",
+    "build2": "rbxtsc --type package"
   },
   "keywords": [],
   "author": "",
