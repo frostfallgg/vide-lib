@@ -1,8 +1,12 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 
-type ImageButtonProps = InstanceAttributes<ImageButton> & SettingsProps;
+interface ImageButtonProps {
+	children?: Node;
+	native?: InstanceAttributes<ImageButton>;
+	settings?: SettingsProps;
+}
 
 /**
  * ImageButton wrapper.
@@ -12,8 +16,8 @@ type ImageButtonProps = InstanceAttributes<ImageButton> & SettingsProps;
  */
 export function ImageButton(props: ImageButtonProps) {
 	return (
-		<imagebutton {...props}>
-			<Settings {...props} />
+		<imagebutton {...props.native}>
+			<Settings {...props.settings} />
 			{props.children}
 		</imagebutton>
 	);
