@@ -26,4 +26,7 @@ exports.ShapeFrame = TS.import(script, script, "components", "shape-frame").Shap
 for _k, _v in TS.import(script, script, "components", "shape-button") or {} do
 	exports[_k] = _v
 end
+for _k, _v in TS.import(script, script, "components", "simple-padding") or {} do
+	exports[_k] = _v
+end
 return exports

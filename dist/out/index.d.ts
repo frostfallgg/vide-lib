@@ -7,3 +7,4 @@ export * from "./hooks/animation/useAutoMotion";
 export * from "./components/scrollable-frame/scrollable-frame";
 export { ShapeFrame } from "./components/shape-frame";
 export * from "./components/shape-button";
+export * from "./components/simple-padding";
