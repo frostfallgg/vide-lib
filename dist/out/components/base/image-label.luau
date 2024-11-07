@@ -11,9 +11,21 @@ local Settings = TS.import(script, script.Parent.Parent, "private", "settings").
 	 
 ]]
 local function ImageLabel(props)
-	local _attributes = table.clone(props)
-	setmetatable(_attributes, nil)
-	return Vide.jsx("imagelabel", nil, Vide.jsx(Settings, _attributes), props.children)
+	local _attributes = {}
+	local _attribute = props.native
+	if _attribute then
+		for _k, _v in _attribute do
+			_attributes[_k] = _v
+		end
+	end
+	local _attributes_1 = {}
+	local _attribute_1 = props.settings
+	if _attribute_1 then
+		for _k, _v in _attribute_1 do
+			_attributes_1[_k] = _v
+		end
+	end
+	return Vide.jsx("imagelabel", _attributes, Vide.jsx(Settings, _attributes_1), props.children)
 end
 return {
 	ImageLabel = ImageLabel,

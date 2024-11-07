@@ -1,8 +1,12 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 
-type ImageLabelProps = InstanceAttributes<ImageLabel> & SettingsProps;
+interface ImageLabelProps {
+	children?: Node;
+	native?: InstanceAttributes<ImageLabel>;
+	settings?: SettingsProps;
+}
 
 /**
  * ImageLabel wrapper.
@@ -12,8 +16,8 @@ type ImageLabelProps = InstanceAttributes<ImageLabel> & SettingsProps;
  */
 export function ImageLabel(props: ImageLabelProps) {
 	return (
-		<imagelabel>
-			<Settings {...props} />
+		<imagelabel {...props.native}>
+			<Settings {...props.settings} />
 			{props.children}
 		</imagelabel>
 	);

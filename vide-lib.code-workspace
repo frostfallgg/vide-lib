@@ -50,5 +50,8 @@
 		"editor.fontLigatures": true,
 		"editor.fontWeight": "300",
 		"editor.mouseWheelZoom": true,
+		"javascript.experimental.updateImportsOnPaste": true,
+		"typescript.experimental.updateImportsOnPaste": true,
+		"javascript.updateImportsOnFileMove.enabled": "always",
 	}
 }

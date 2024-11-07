@@ -12,7 +12,7 @@ type ImageButtonProps = InstanceAttributes<ImageButton> & SettingsProps;
  */
 export function ImageButton(props: ImageButtonProps) {
 	return (
-		<imagebutton>
+		<imagebutton {...props}>
 			<Settings {...props} />
 			{props.children}
 		</imagebutton>

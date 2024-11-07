@@ -1,7 +1,10 @@
-import type { InstanceAttributes } from "@rbxts/vide";
-import Vide from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import { type SettingsProps } from "../private/settings";
-type ScrollingFrameProps = InstanceAttributes<ScrollingFrame> & SettingsProps;
+interface ScrollingFrameProps {
+    children?: Node;
+    native?: InstanceAttributes<ScrollingFrame>;
+    settings?: SettingsProps;
+}
 /**
  * ScrollingFrame wrapper.
  *
@@ -10,5 +13,5 @@ type ScrollingFrameProps = InstanceAttributes<ScrollingFrame> & SettingsProps;
  * Includes built in uiaspectratio, size constraint, and uiflexitem.
  *
  */
-export declare function ScrollingFrame(props: ScrollingFrameProps): Vide.Node;
+export declare function ScrollingFrame(props: ScrollingFrameProps): Node;
 export {};

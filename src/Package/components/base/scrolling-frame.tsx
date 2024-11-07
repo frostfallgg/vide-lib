@@ -1,8 +1,12 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 
-type ScrollingFrameProps = InstanceAttributes<ScrollingFrame> & SettingsProps;
+interface ScrollingFrameProps {
+	children?: Node;
+	native?: InstanceAttributes<ScrollingFrame>;
+	settings?: SettingsProps;
+}
 
 /**
  * ScrollingFrame wrapper.

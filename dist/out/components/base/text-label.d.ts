@@ -1,12 +1,15 @@
-import type { InstanceAttributes } from "@rbxts/vide";
-import Vide from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import { type SettingsProps } from "../private/settings";
-type TextLabelProps = InstanceAttributes<TextLabel> & SettingsProps;
+interface TextLabelProps {
+    children?: Node;
+    native?: InstanceAttributes<TextLabel>;
+    settings?: SettingsProps;
+}
 /**
  * TextLabel wrapper.
  *
  * Includes built in uiaspectratio, size constraint, and uiflexitem.
  *
  */
-export declare function TextLabel(props: TextLabelProps): Vide.Node;
+export declare function TextLabel(props: TextLabelProps): Node;
 export {};

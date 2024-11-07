@@ -1,9 +1,13 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 import type { TextProps } from "../private/utility-types";
 
-type ButtonProps = Omit<InstanceAttributes<TextButton>, TextProps> & SettingsProps;
+interface ButtonProps {
+	children?: Node;
+	native?: Omit<InstanceAttributes<TextButton>, TextProps>;
+	settings?: SettingsProps;
+}
 
 /**
  * TextButton wrapper with all text properties stripped out.
@@ -13,8 +17,8 @@ type ButtonProps = Omit<InstanceAttributes<TextButton>, TextProps> & SettingsPro
  */
 export function Button(props: ButtonProps) {
 	return (
-		<textbutton Text="" {...props}>
-			<Settings {...props} />
+		<textbutton Text="" {...props.native}>
+			<Settings {...props.settings} />
 			{props.children}
 		</textbutton>
 	);

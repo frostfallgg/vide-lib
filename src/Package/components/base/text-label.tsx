@@ -1,8 +1,12 @@
-import type { InstanceAttributes } from "@rbxts/vide";
+import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
 import { Settings, type SettingsProps } from "../private/settings";
 
-type TextLabelProps = InstanceAttributes<TextLabel> & SettingsProps;
+interface TextLabelProps {
+	children?: Node;
+	native?: InstanceAttributes<TextLabel>;
+	settings?: SettingsProps;
+}
 
 /**
  * TextLabel wrapper.
@@ -12,8 +16,8 @@ type TextLabelProps = InstanceAttributes<TextLabel> & SettingsProps;
  */
 export function TextLabel(props: TextLabelProps) {
 	return (
-		<textlabel {...props}>
-			<Settings {...props} />
+		<textlabel {...props.native}>
+			<Settings {...props.settings} />
 			{props.children}
 		</textlabel>
 	);
