@@ -12,7 +12,7 @@ type TextLabelProps = InstanceAttributes<TextLabel> & SettingsProps;
  */
 export function TextLabel(props: TextLabelProps) {
 	return (
-		<textlabel>
+		<textlabel {...props}>
 			<Settings {...props} />
 			{props.children}
 		</textlabel>

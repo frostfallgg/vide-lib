@@ -13,7 +13,7 @@ type ButtonProps = Omit<InstanceAttributes<TextButton>, TextProps> & SettingsPro
  */
 export function Button(props: ButtonProps) {
 	return (
-		<textbutton Text="">
+		<textbutton Text="" {...props}>
 			<Settings {...props} />
 			{props.children}
 		</textbutton>

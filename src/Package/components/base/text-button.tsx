@@ -12,7 +12,7 @@ type TextButtonProps = InstanceAttributes<TextButton> & SettingsProps;
  */
 export function TextButton(props: TextButtonProps) {
 	return (
-		<textbutton>
+		<textbutton {...props}>
 			<Settings {...props} />
 			{props.children}
 		</textbutton>

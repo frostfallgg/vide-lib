@@ -12,7 +12,7 @@ type FrameProps = InstanceAttributes<Frame> & SettingsProps;
  */
 export function Frame(props: FrameProps) {
 	return (
-		<frame>
+		<frame {...props}>
 			<Settings {...props} />
 			{props.children}
 		</frame>
