@@ -20,7 +20,7 @@ local function useMotion(initialValue, valueSource)
 		return valueSource(value)
 	end)
 	cleanup(function()
-		return motion:stop()
+		return motion:destroy()
 	end)
 	return motion
 end

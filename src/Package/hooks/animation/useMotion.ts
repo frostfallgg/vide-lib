@@ -14,7 +14,7 @@ type MotionType = "tween" | "spring" | "linear" | "immediate";
 export function useMotion<T extends MotionGoal>(initialValue: T, valueSource: Source<T>) {
 	const motion = createMotion(initialValue, { start: false });
 	motion.onStep((value) => valueSource(value));
-	cleanup(() => motion.stop());
+	cleanup(() => motion.destroy());
 
 	return motion;
 }
