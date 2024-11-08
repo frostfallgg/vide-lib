@@ -6,7 +6,9 @@ export * from "./resources/images";
 export * from "./hooks/useMouseHover";
 export * from "./hooks/useMouseHold";
 export * from "./hooks/usePx";
-export * from "./hooks/animation/useMotion";
+export * from "./hooks/animation/useLinear";
+export * from "./hooks/animation/useSpring";
+export * from "./hooks/animation/useTween";
 
 // Custom components
 export * from "./components/scrollable-frame/scrollable-frame";
