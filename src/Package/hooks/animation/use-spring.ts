@@ -1,6 +1,6 @@
 import type { MotionGoal, PartialMotionGoal, SpringOptions } from "@rbxts/ripple";
 import type { Source } from "@rbxts/vide";
-import { useMotion } from "./useMotion";
+import { useMotion } from "./use-motion";
 
 export function useSpring<T extends MotionGoal>(
 	initialValue: T,

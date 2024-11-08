@@ -2,7 +2,7 @@ import { Choose, type InferVideProps } from "@rbxts/ui-labs";
 import Vide, { derive, effect, source } from "@rbxts/vide";
 import { Fonts } from "Package";
 import { ShapeButton } from "Package/components/shape-button";
-import { px } from "Package/hooks/usePx";
+import { px } from "Package/hooks/use-px";
 
 const DEFAULT_COLOR = Color3.fromHex("#4064F7");
 const HOVERED_COLOR = Color3.fromHex("#549F93");

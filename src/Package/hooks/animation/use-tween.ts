@@ -1,6 +1,6 @@
 import type { MotionGoal, PartialMotionGoal, TweenOptions } from "@rbxts/ripple";
 import type { Source } from "@rbxts/vide";
-import { useMotion } from "./useMotion";
+import { useMotion } from "./use-motion";
 
 export function useTween<T extends MotionGoal>(
 	initialValue: T,

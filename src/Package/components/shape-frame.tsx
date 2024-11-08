@@ -1,5 +1,5 @@
 import Vide, { derive, read, Show, type Derivable } from "@rbxts/vide";
-import { useSource } from "Package/hooks/useSource";
+import { useSource } from "Package/hooks/use-source";
 import type { ComponentBase } from "Package/props/ComponentBase";
 import { UISlices } from "Package/resources/images";
 

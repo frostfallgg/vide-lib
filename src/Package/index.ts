@@ -5,10 +5,11 @@ export * from "./resources/images";
 // Hooks
 export * from "./hooks/useMouseHover";
 export * from "./hooks/useMouseHold";
-export * from "./hooks/usePx";
-export * from "./hooks/animation/useLinear";
-export * from "./hooks/animation/useSpring";
-export * from "./hooks/animation/useTween";
+export * from "./hooks/use-px";
+export * from "./hooks/animation/use-linear";
+export * from "./hooks/animation/use-spring";
+export * from "./hooks/animation/use-tween";
+export * from "./hooks/use-source";
 
 // Custom components
 export * from "./components/scrollable-frame/scrollable-frame";

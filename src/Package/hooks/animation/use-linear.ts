@@ -1,6 +1,6 @@
 import type { LinearOptions, MotionGoal, PartialMotionGoal } from "@rbxts/ripple";
 import type { Source } from "@rbxts/vide";
-import { useMotion } from "./useMotion";
+import { useMotion } from "./use-motion";
 
 export function useLinear<T extends MotionGoal>(
 	initialValue: T,

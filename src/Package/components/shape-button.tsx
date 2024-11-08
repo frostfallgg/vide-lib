@@ -1,5 +1,5 @@
 import Vide, { derive, read, Show } from "@rbxts/vide";
-import { useSource } from "Package/hooks/useSource";
+import { useSource } from "Package/hooks/use-source";
 import { UISlices } from "Package/resources/images";
 import type { ShapeFrameProps } from "./shape-frame";
 

@@ -1,7 +1,7 @@
 import type { InferVideProps } from "@rbxts/ui-labs";
 import Vide, { For, source } from "@rbxts/vide";
 import { Fonts, ScrollableFrame } from "Package";
-import { px } from "Package/hooks/usePx";
+import { px } from "Package/hooks/use-px";
 
 const controls = {};
 

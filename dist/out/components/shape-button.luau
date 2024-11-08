@@ -5,7 +5,7 @@ local Vide = _vide
 local derive = _vide.derive
 local read = _vide.read
 local Show = _vide.Show
-local useSource = TS.import(script, script.Parent.Parent, "hooks", "useSource").useSource
+local useSource = TS.import(script, script.Parent.Parent, "hooks", "use-source").useSource
 local UISlices = TS.import(script, script.Parent.Parent, "resources", "images").UISlices
 local function ShapeButton(_param)
 	local children = _param.children
