@@ -1,7 +1,7 @@
 -- Compiled with roblox-ts v3.0.0
 local TS = _G[script]
 local Vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
-local Settings = TS.import(script, script.Parent.Parent, "private", "settings").Settings
+local UIObjects = TS.import(script, script.Parent.Parent, "private", "ui-objects").UIObjects
 --[[
 	*
 	 * TextLabel wrapper.
@@ -18,14 +18,15 @@ local function TextLabel(props)
 			_attributes[_k] = _v
 		end
 	end
-	local _attributes_1 = {}
-	local _attribute_1 = props.settings
-	if _attribute_1 then
-		for _k, _v in _attribute_1 do
-			_attributes_1[_k] = _v
-		end
-	end
-	return Vide.jsx("textlabel", _attributes, Vide.jsx(Settings, _attributes_1), props.children)
+	return Vide.jsx("textlabel", _attributes, Vide.jsx(UIObjects, {
+		aspectRatio = props.aspectRatio,
+		aspectRatioConstraint = props.aspectRatioConstraint,
+		cornerRadius = props.cornerRadius,
+		flexItemLineAlign = props.flexItemLineAlign,
+		flexMode = props.flexMode,
+		maxSize = props.maxSize,
+		minSize = props.minSize,
+	}), props.children)
 end
 return {
 	TextLabel = TextLabel,

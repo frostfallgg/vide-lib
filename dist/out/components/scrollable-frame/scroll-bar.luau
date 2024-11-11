@@ -2,52 +2,94 @@
 local TS = _G[script]
 local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local Vide = _vide
+local cleanup = _vide.cleanup
 local derive = _vide.derive
+local effect = _vide.effect
 local read = _vide.read
-local ShapeButton = TS.import(script, script.Parent.Parent, "shape-button").ShapeButton
-local THUMB_COLOR
+local source = _vide.source
+local Button = TS.import(script, script.Parent.Parent, "base", "button").Button
+local Frame = TS.import(script, script.Parent.Parent, "base", "frame").Frame
+local useScrollInput = TS.import(script, script.Parent, "hooks", "use-scroll-input").useScrollInput
+local useThumb = TS.import(script, script.Parent, "hooks", "use-thumb").useThumb
+local TRACK_HEIGHT_MULTIPLER
 local function Scrollbar(_param)
-	local width = _param.width
+	local barWidth = _param.barWidth
+	local thumbHeightMultiplier = _param.thumbHeightMultiplier
+	local onScrollCallback = _param.onScrollCallback
+	local maxContentScroll = _param.maxContentScroll
+	local isFrameHovered = _param.isFrameHovered
 	local thumbColor = _param.thumbColor
-	local frameHovered = _param.frameHovered
-	-- Thumb props
-	local _thumbSize = derive(function()
-		return UDim2.new(0, read(width), 0, 60)
+	local trackColor = _param.trackColor
+	-- Outputs
+	local trackSizeOut = source(Vector2.new(0, 0))
+	-- Actions
+	local function trackAction(ref)
+		local sizeChanged = ref:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+			return trackSizeOut(ref.AbsoluteSize)
+		end)
+		cleanup(function()
+			return sizeChanged:Disconnect()
+		end)
+	end
+	-- Events
+	local isThumbHovered = source(false)
+	-- Props
+	local barSize = derive(function()
+		return UDim2.new(0, read(barWidth), 1, 0)
 	end)
-	local _thumbColor = derive(function()
-		return read(thumbColor or THUMB_COLOR)
+	-- Computed props
+	local thumbSizeDerived = derive(function()
+		local trackSizeY = trackSizeOut().Y
+		local relativeToContent = thumbHeightMultiplier() * trackSizeY
+		if relativeToContent >= trackSizeY then
+			return UDim2.new(0, read(barWidth), 0, 0)
+		end
+		return UDim2.new(1, 0, 0, relativeToContent)
 	end)
-	-- Track props
-	local _trackSize = derive(function()
-		return UDim2.new(0, read(width), 1, 0)
+	local maxThumbPosition = derive(function()
+		return trackSizeOut().Y - thumbSizeDerived().Height.Offset
+	end)
+	-- Interactions
+	local thumbPosition = useThumb(maxThumbPosition, isThumbHovered)
+	useScrollInput(maxThumbPosition, isFrameHovered, thumbPosition)
+	effect(function()
+		return onScrollCallback(thumbPosition().Height.Offset, maxContentScroll(), trackSizeOut().Y)
 	end)
 	return Vide.jsx("frame", {
 		Name = "scroll-bar",
-		Size = _trackSize,
+		Size = barSize,
 		AnchorPoint = Vector2.new(1, 0),
 		Position = UDim2.fromScale(1, 0),
 		BackgroundTransparency = 1,
-	}, Vide.jsx(ShapeButton, {
+	}, Vide.jsx(Frame, {
 		native = {
 			Name = "scroll-track",
-			Size = UDim2.new(0.5, 0, 0.985, 0),
+			Size = UDim2.new(0.5, 0, TRACK_HEIGHT_MULTIPLER, 0),
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = UDim2.fromScale(0.5, 0.5),
+			BackgroundColor3 = trackColor,
+			action = trackAction,
 		},
-		shape = "circle_128",
-		color = Color3.fromRGB(43, 45, 49),
-	}, Vide.jsx(ShapeButton, {
+		cornerRadius = 180,
+	}, Vide.jsx(Button, {
 		native = {
 			Name = "scroll-thumb",
-			Size = UDim2.new(1, 0, 0, 125),
+			Size = thumbSizeDerived,
 			AnchorPoint = Vector2.new(0.5, 0),
-			Position = UDim2.fromScale(0.5, 0),
+			Position = thumbPosition,
+			BackgroundColor3 = thumbColor,
+			MouseEnter = function()
+				return isThumbHovered(true)
+			end,
+			MouseLeave = function()
+				return isThumbHovered(false)
+			end,
 		},
-		shape = "circle_128",
-		color = Color3.fromRGB(26, 27, 30),
+		cornerRadius = 180,
 	})))
 end
-THUMB_COLOR = Color3.fromHSV(0, 0.04, 0.46)
+TRACK_HEIGHT_MULTIPLER = 0.985
+local THUMB_COLOR = Color3.fromHSV(0, 0.04, 0.46)
 return {
 	Scrollbar = Scrollbar,
 }

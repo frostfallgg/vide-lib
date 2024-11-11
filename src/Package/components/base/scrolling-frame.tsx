@@ -1,11 +1,10 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
-import { Settings, type SettingsProps } from "../private/settings";
+import { UIObjects, type UIObjectsProps } from "../private/ui-objects";
 
-interface ScrollingFrameProps {
+interface ScrollingFrameProps extends UIObjectsProps {
 	children?: Node;
 	native?: InstanceAttributes<ScrollingFrame>;
-	settings?: SettingsProps;
 }
 
 /**
@@ -19,7 +18,15 @@ interface ScrollingFrameProps {
 export function ScrollingFrame(props: ScrollingFrameProps) {
 	return (
 		<scrollingframe AutomaticCanvasSize={"XY"} CanvasSize={UDim2.fromScale(0, 0)} {...props}>
-			<Settings {...props} />
+			<UIObjects
+				aspectRatio={props.aspectRatio}
+				aspectRatioConstraint={props.aspectRatioConstraint}
+				cornerRadius={props.cornerRadius}
+				flexItemLineAlign={props.flexItemLineAlign}
+				flexMode={props.flexMode}
+				maxSize={props.maxSize}
+				minSize={props.minSize}
+			/>
 			{props.children}
 		</scrollingframe>
 	);

@@ -8,13 +8,10 @@ end
 for _k, _v in TS.import(script, script, "resources", "images") or {} do
 	exports[_k] = _v
 end
+for _k, _v in TS.import(script, script, "resources", "themes") or {} do
+	exports[_k] = _v
+end
 -- Hooks
-for _k, _v in TS.import(script, script, "hooks", "useMouseHover") or {} do
-	exports[_k] = _v
-end
-for _k, _v in TS.import(script, script, "hooks", "useMouseHold") or {} do
-	exports[_k] = _v
-end
 for _k, _v in TS.import(script, script, "hooks", "use-px") or {} do
 	exports[_k] = _v
 end
@@ -61,6 +58,10 @@ for _k, _v in TS.import(script, script, "components", "base", "text-button") or 
 	exports[_k] = _v
 end
 for _k, _v in TS.import(script, script, "components", "base", "text-label") or {} do
+	exports[_k] = _v
+end
+-- Utility
+for _k, _v in TS.import(script, script, "utility", "scale-util") or {} do
 	exports[_k] = _v
 end
 return exports

@@ -1,9 +1,8 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
-import { type SettingsProps } from "../private/settings";
-interface ImageLabelProps {
+import { type UIObjectsProps } from "../private/ui-objects";
+interface ImageLabelProps extends UIObjectsProps {
     children?: Node;
     native?: InstanceAttributes<ImageLabel>;
-    settings?: SettingsProps;
 }
 /**
  * ImageLabel wrapper.

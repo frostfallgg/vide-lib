@@ -1,11 +1,10 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
-import { Settings, type SettingsProps } from "../private/settings";
+import { UIObjects, type UIObjectsProps } from "../private/ui-objects";
 
-interface ImageButtonProps {
+interface ImageButtonProps extends UIObjectsProps {
 	children?: Node;
 	native?: InstanceAttributes<ImageButton>;
-	settings?: SettingsProps;
 }
 
 /**
@@ -17,7 +16,15 @@ interface ImageButtonProps {
 export function ImageButton(props: ImageButtonProps) {
 	return (
 		<imagebutton {...props.native}>
-			<Settings {...props.settings} />
+			<UIObjects
+				aspectRatio={props.aspectRatio}
+				aspectRatioConstraint={props.aspectRatioConstraint}
+				cornerRadius={props.cornerRadius}
+				flexItemLineAlign={props.flexItemLineAlign}
+				flexMode={props.flexMode}
+				maxSize={props.maxSize}
+				minSize={props.minSize}
+			/>
 			{props.children}
 		</imagebutton>
 	);

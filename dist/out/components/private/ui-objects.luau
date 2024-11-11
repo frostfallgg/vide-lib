@@ -4,10 +4,10 @@ local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local Show = _vide.Show
 local read = _vide.read
 local Vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
-local function Settings(props)
+local function UIObjects(props)
 	return Vide.jsx(Vide.Fragment, nil, Vide.jsx(Show, {
 		when = function()
-			return read(props.aspectRatioConstraint) ~= nil
+			return read(props.aspectRatio) ~= nil
 		end,
 	}, function()
 		return Vide.jsx("uiaspectratioconstraint", {
@@ -32,8 +32,16 @@ local function Settings(props)
 			MaxSize = props.maxSize,
 			MinSize = props.minSize,
 		})
+	end), Vide.jsx(Show, {
+		when = function()
+			return read(props.cornerRadius) ~= nil
+		end,
+	}, function()
+		return Vide.jsx("uicorner", {
+			CornerRadius = UDim.new(0, read(props.cornerRadius)),
+		})
 	end))
 end
 return {
-	Settings = Settings,
+	UIObjects = UIObjects,
 }

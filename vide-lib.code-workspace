@@ -41,7 +41,10 @@
 		"explorer.autoRevealExclude": {
 			"**/out": true
 		},
-		//"editor.fontFamily": "Monaspace Neon",
+		// "editor.fontFamily": "Monaspace Neon",
+		// "editor.fontLigatures": "'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09'",
+		// "editor.fontFamily": "Cascadia Code",
+		// "editor.fontLigatures": "'ss19', 'ss20'",
 		"editor.fontFamily": "Iosevka",
 		//"editor.fontFamily": "Jet Brains Mono",
 		//"editor.fontFamily": "Monego Ligatures",

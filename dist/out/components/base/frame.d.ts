@@ -1,9 +1,8 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
-import { type SettingsProps } from "../private/settings";
-interface FrameProps {
+import { type UIObjectsProps } from "../private/ui-objects";
+interface FrameProps extends UIObjectsProps {
     children?: Node;
     native?: InstanceAttributes<Frame>;
-    settings?: SettingsProps;
 }
 /**
  * Frame wrapper.

@@ -1,57 +1,43 @@
-import type { InferVideProps } from "@rbxts/ui-labs";
-import Vide, { For, source } from "@rbxts/vide";
-import { Fonts, ScrollableFrame } from "Package";
+import { type InferVideProps, Slider } from "@rbxts/ui-labs";
+import Vide, { derive, For } from "@rbxts/vide";
+import { Fonts, ScrollableFrame, Themes } from "Package";
 import { px } from "Package/hooks/use-px";
 
-const controls = {};
+const controls = {
+	"Element Count": Slider(5, 1, 30, 1),
+};
 
 const story = {
 	vide: Vide,
 	controls,
 	story: (props: InferVideProps<typeof controls>) => {
-		const letters = source([
-			"A",
-			"B",
-			"C",
-			"D",
-			"E",
-			"F",
-			"G",
-			"H",
-			"I",
-			"J",
-			"K",
-			"L",
-			"M",
-			"N",
-			"O",
-			"P",
-			"Q",
-			"R",
-			"S",
-			"T",
-			"U",
-			"V",
-			"W",
-			"X",
-			"Y",
-			"Z",
-		]);
+		const labelText = derive(() => {
+			const numberStrings: string[] = [];
+			const count = props.controls["Element Count"]();
+			for (let i = 0; i < count; i++) {
+				numberStrings.push(tostring(i));
+			}
+			return numberStrings;
+		});
 
 		return (
 			<ScrollableFrame
 				position={UDim2.fromScale(0.5, 0.5)}
-				size={UDim2.fromScale(0.45, 0.9)}
+				size={UDim2.fromOffset(435, 620)}
 				anchorPoint={new Vector2(0.5, 0.5)}
-				color={Color3.fromRGB(49, 51, 56)}
 			>
-				<uilistlayout FillDirection={"Vertical"} Padding={new UDim(0, 4)} SortOrder={"LayoutOrder"} />
-				<For each={letters}>
+				<uilistlayout
+					FillDirection={"Vertical"}
+					HorizontalAlignment={"Center"}
+					Padding={new UDim(0, 4)}
+					SortOrder={"LayoutOrder"}
+				/>
+				<For each={labelText}>
 					{(item, index) => {
 						return (
 							<frame
-								Size={new UDim2(1, 0, 0, 150)}
-								BackgroundColor3={Color3.fromRGB(112, 28, 28)}
+								Size={new UDim2(0.95, 0, 0, 150)}
+								BackgroundColor3={Themes.Discord.Dark[1]}
 								Name={"card"}
 								LayoutOrder={index}
 							>
@@ -60,7 +46,8 @@ const story = {
 									Text={item}
 									FontFace={Fonts.poppins.medium}
 									TextSize={px(52)}
-									TextColor3={Color3.fromRGB(255, 255, 255)}
+									TextColor3={Themes.Discord.White[1]}
+									TextTransparency={0.15}
 									BackgroundTransparency={1}
 								/>
 							</frame>

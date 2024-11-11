@@ -1,9 +1,8 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
-import { type SettingsProps } from "../private/settings";
-interface ImageButtonProps {
+import { type UIObjectsProps } from "../private/ui-objects";
+interface ImageButtonProps extends UIObjectsProps {
     children?: Node;
     native?: InstanceAttributes<ImageButton>;
-    settings?: SettingsProps;
 }
 /**
  * ImageButton wrapper.

@@ -1,10 +1,9 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
-import { type SettingsProps } from "../private/settings";
+import { type UIObjectsProps } from "../private/ui-objects";
 import type { TextProps } from "../private/utility-types";
-interface ButtonProps {
+interface ButtonProps extends UIObjectsProps {
     children?: Node;
     native?: Omit<InstanceAttributes<TextButton>, TextProps>;
-    settings?: SettingsProps;
 }
 /**
  * TextButton wrapper with all text properties stripped out.

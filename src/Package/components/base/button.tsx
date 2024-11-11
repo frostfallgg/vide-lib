@@ -1,12 +1,11 @@
 import type { InstanceAttributes, Node } from "@rbxts/vide";
 import Vide from "@rbxts/vide";
-import { Settings, type SettingsProps } from "../private/settings";
+import { UIObjects, type UIObjectsProps } from "../private/ui-objects";
 import type { TextProps } from "../private/utility-types";
 
-interface ButtonProps {
+interface ButtonProps extends UIObjectsProps {
 	children?: Node;
 	native?: Omit<InstanceAttributes<TextButton>, TextProps>;
-	settings?: SettingsProps;
 }
 
 /**
@@ -18,7 +17,15 @@ interface ButtonProps {
 export function Button(props: ButtonProps) {
 	return (
 		<textbutton Text="" {...props.native}>
-			<Settings {...props.settings} />
+			<UIObjects
+				aspectRatio={props.aspectRatio}
+				aspectRatioConstraint={props.aspectRatioConstraint}
+				cornerRadius={props.cornerRadius}
+				flexItemLineAlign={props.flexItemLineAlign}
+				flexMode={props.flexMode}
+				maxSize={props.maxSize}
+				minSize={props.minSize}
+			/>
 			{props.children}
 		</textbutton>
 	);

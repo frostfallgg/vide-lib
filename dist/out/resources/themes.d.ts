@@ -60,3 +60,27 @@ export interface Theme {
         };
     };
 }
+export declare const Themes: {
+    Discord: {
+        Dark: {
+            1: Color3;
+            2: Color3;
+            3: Color3;
+            4: Color3;
+            5: Color3;
+            6: Color3;
+        };
+        White: {
+            1: Color3;
+            2: Color3;
+            3: Color3;
+            4: Color3;
+            5: Color3;
+        };
+        Primary: Color3;
+        Secondary: Color3;
+        Success: Color3;
+        Destructive: Color3;
+        Notification: Color3;
+    };
+};
