@@ -5,10 +5,8 @@ export * from "./resources/themes";
 
 // Hooks
 export * from "./hooks/use-px";
-export * from "./hooks/animation/use-linear";
-export * from "./hooks/animation/use-spring";
-export * from "./hooks/animation/use-tween";
 export * from "./hooks/use-source";
+export * from "./hooks/use-spring";
 
 // Custom components
 export * from "./components/scrollable-frame/scrollable-frame";

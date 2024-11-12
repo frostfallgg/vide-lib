@@ -32,7 +32,7 @@ local function Scrollbar(_param)
 		end)
 	end
 	-- Events
-	local isThumbHovered = source(false)
+	local isThumbDragging = source(false)
 	-- Props
 	local barSize = derive(function()
 		return UDim2.new(0, read(barWidth), 1, 0)
@@ -50,11 +50,21 @@ local function Scrollbar(_param)
 		return trackSizeOut().Y - thumbSizeDerived().Height.Offset
 	end)
 	-- Interactions
-	local thumbPosition = useThumb(maxThumbPosition, isThumbHovered)
+	local thumbPosition = useThumb(maxThumbPosition, isThumbDragging)
 	useScrollInput(maxThumbPosition, isFrameHovered, thumbPosition)
 	effect(function()
 		return onScrollCallback(thumbPosition().Height.Offset, maxContentScroll(), trackSizeOut().Y)
 	end)
+	local function handleThumbInputBegan(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			isThumbDragging(true)
+		end
+	end
+	local function handleThumbInputEnded(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			isThumbDragging(false)
+		end
+	end
 	return Vide.jsx("frame", {
 		Name = "scroll-bar",
 		Size = barSize,
@@ -78,12 +88,8 @@ local function Scrollbar(_param)
 			AnchorPoint = Vector2.new(0.5, 0),
 			Position = thumbPosition,
 			BackgroundColor3 = thumbColor,
-			MouseEnter = function()
-				return isThumbHovered(true)
-			end,
-			MouseLeave = function()
-				return isThumbHovered(false)
-			end,
+			InputBegan = handleThumbInputBegan,
+			InputEnded = handleThumbInputEnded,
 		},
 		cornerRadius = 180,
 	})))

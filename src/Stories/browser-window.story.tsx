@@ -1,6 +1,6 @@
 import type { InferVideProps } from "@rbxts/ui-labs";
 import Vide, { source } from "@rbxts/vide";
-import { BrowserWindow } from "Package/components/browser-window/browser.window";
+import { BrowserWindow } from "Package/components/browser-window/browser-window";
 
 const controls = {};
 

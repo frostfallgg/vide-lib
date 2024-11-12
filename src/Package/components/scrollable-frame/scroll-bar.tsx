@@ -35,7 +35,7 @@ export function Scrollbar({
 	}
 
 	// Events
-	const isThumbHovered = source(false);
+	const isThumbDragging = source(false);
 
 	// Props
 	const barSize = derive(() => new UDim2(0, read(barWidth), 1, 0));
@@ -52,10 +52,22 @@ export function Scrollbar({
 	const maxThumbPosition = derive(() => trackSizeOut().Y - thumbSizeDerived().Height.Offset);
 
 	// Interactions
-	const thumbPosition = useThumb(maxThumbPosition, isThumbHovered);
+	const thumbPosition = useThumb(maxThumbPosition, isThumbDragging);
 	useScrollInput(maxThumbPosition, isFrameHovered, thumbPosition);
 
 	effect(() => onScrollCallback(thumbPosition().Height.Offset, maxContentScroll(), trackSizeOut().Y));
+
+	function handleThumbInputBegan(input: InputObject) {
+		if (input.UserInputType === Enum.UserInputType.MouseButton1) {
+			isThumbDragging(true);
+		}
+	}
+
+	function handleThumbInputEnded(input: InputObject) {
+		if (input.UserInputType === Enum.UserInputType.MouseButton1) {
+			isThumbDragging(false);
+		}
+	}
 
 	return (
 		<frame
@@ -83,8 +95,8 @@ export function Scrollbar({
 						AnchorPoint: new Vector2(0.5, 0),
 						Position: thumbPosition,
 						BackgroundColor3: thumbColor,
-						MouseEnter: () => isThumbHovered(true),
-						MouseLeave: () => isThumbHovered(false),
+						InputBegan: handleThumbInputBegan,
+						InputEnded: handleThumbInputEnded,
 					}}
 					cornerRadius={180}
 				/>

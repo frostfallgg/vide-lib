@@ -1,11 +1,13 @@
 -- Compiled with roblox-ts v3.0.0
 local TS = _G[script]
 local useMotion = TS.import(script, script.Parent, "use-motion").useMotion
-local function useLinear(initialValue, goalValue, valueSource, options)
+local function useSpring(initialValue, valueSource, options)
 	local motion = useMotion(initialValue, valueSource)
-	motion:linear(goalValue, options)
-	return motion
+	local function animate(goal)
+		motion:spring(goal, options)
+	end
+	return animate
 end
 return {
-	useLinear = useLinear,
+	useSpring = useSpring,
 }

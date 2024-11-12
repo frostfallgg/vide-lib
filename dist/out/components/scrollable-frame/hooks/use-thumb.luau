@@ -9,26 +9,9 @@ local effect = _vide.effect
 local source = _vide.source
 local untrack = _vide.untrack
 local VALID_MOUSE_BUFFER
-local function useThumb(maximumThumbPosition, isThumbHovered)
+local function useThumb(maximumThumbPosition, isDragging)
 	local thumbPosition = source(UDim2.new(0.5, 0, 0, 0))
-	local isDragging = source(false)
 	local isOutsideTrack = source(false)
-	local function clickListener()
-		return UserInputService.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
-				isDragging(true)
-				isOutsideTrack(false)
-			end
-		end)
-	end
-	local function unclickListener()
-		return UserInputService.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
-				isDragging(false)
-				isOutsideTrack(false)
-			end
-		end)
-	end
 	local function dragHandler()
 		local startMouse = UserInputService:GetMouseLocation()
 		local startMouseX = startMouse.X
@@ -58,20 +41,10 @@ local function useThumb(maximumThumbPosition, isThumbHovered)
 		end)
 	end
 	effect(function()
-		if isThumbHovered() then
-			local clickCon = clickListener()
-			cleanup(function()
-				return clickCon:Disconnect()
-			end)
-		end
-	end)
-	effect(function()
 		if isDragging() then
-			local unclickCon = unclickListener()
 			local dragCon = dragHandler()
 			cleanup(function()
 				dragCon:Disconnect()
-				unclickCon:Disconnect()
 			end)
 		end
 	end)

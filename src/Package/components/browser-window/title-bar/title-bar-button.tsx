@@ -1,8 +1,8 @@
-import type { TweenOptions } from "@rbxts/ripple";
-import Vide, { effect, source, untrack, type Derivable } from "@rbxts/vide";
+import { type TweenOptions, config } from "@rbxts/ripple";
+import Vide, { effect, source, type Derivable } from "@rbxts/vide";
 import { Button } from "Package/components/base/button";
 import { ImageLabel } from "Package/components/base/image-label";
-import { useTween } from "Package/hooks/animation/use-tween";
+import { useSpring } from "../hooks/animation/use-spring";
 
 interface TitleBarButtonProps {
 	Callback: () => void;
@@ -30,22 +30,17 @@ export function TitleBarButton({
 	const cfg: TweenOptions = {
 		time: 0.1,
 	};
+
+	const [bgTransparencyMotion] = useSpring(1, BackgroundTransparency, config.spring.stiff);
+	const [iconTransparencyMotion] = useSpring(0.5, IconTransparency, config.spring.stiff);
+
 	effect(() => {
 		if (isHovered()) {
-			const backgroundTween = useTween(
-				untrack(BackgroundTransparency),
-				OnHoverTransparency,
-				BackgroundTransparency,
-				cfg,
-			);
-			const iconTween = useTween(untrack(IconTransparency), 0, IconTransparency, cfg);
-			backgroundTween.start();
-			iconTween.start();
+			bgTransparencyMotion(OnHoverTransparency);
+			iconTransparencyMotion(0);
 		} else {
-			const backgroundTween = useTween(untrack(BackgroundTransparency), 1, BackgroundTransparency, cfg);
-			const iconTween = useTween(untrack(IconTransparency), 0.5, IconTransparency, cfg);
-			backgroundTween.start();
-			iconTween.start();
+			bgTransparencyMotion(1);
+			iconTransparencyMotion(0.5);
 		}
 	});
 

@@ -1,13 +1,13 @@
 -- Compiled with roblox-ts v3.0.0
 local TS = _G[script]
+local config = TS.import(script, TS.getModule(script, "@rbxts", "ripple").src).config
 local _vide = TS.import(script, TS.getModule(script, "@rbxts", "vide").src)
 local Vide = _vide
 local effect = _vide.effect
 local source = _vide.source
-local untrack = _vide.untrack
 local Button = TS.import(script, script.Parent.Parent.Parent, "base", "button").Button
 local ImageLabel = TS.import(script, script.Parent.Parent.Parent, "base", "image-label").ImageLabel
-local useTween = TS.import(script, script.Parent.Parent.Parent.Parent, "hooks", "animation", "use-tween").useTween
+local useSpring = TS.import(script, script.Parent.Parent, "hooks", "animation", "use-spring").useSpring
 local function TitleBarButton(_param)
 	local Name = _param.Name
 	local Callback = _param.Callback
@@ -22,17 +22,15 @@ local function TitleBarButton(_param)
 	local cfg = {
 		time = 0.1,
 	}
+	local bgTransparencyMotion = useSpring(1, BackgroundTransparency, config.spring.stiff)
+	local iconTransparencyMotion = useSpring(0.5, IconTransparency, config.spring.stiff)
 	effect(function()
 		if isHovered() then
-			local backgroundTween = useTween(untrack(BackgroundTransparency), OnHoverTransparency, BackgroundTransparency, cfg)
-			local iconTween = useTween(untrack(IconTransparency), 0, IconTransparency, cfg)
-			backgroundTween:start()
-			iconTween:start()
+			bgTransparencyMotion(OnHoverTransparency)
+			iconTransparencyMotion(0)
 		else
-			local backgroundTween = useTween(untrack(BackgroundTransparency), 1, BackgroundTransparency, cfg)
-			local iconTween = useTween(untrack(IconTransparency), 0.5, IconTransparency, cfg)
-			backgroundTween:start()
-			iconTween:start()
+			bgTransparencyMotion(1)
+			iconTransparencyMotion(0.5)
 		end
 	end)
 	return Vide.jsx(Button, {

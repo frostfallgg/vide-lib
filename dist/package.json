@@ -1,5 +1,5 @@
 {
-  "name": "@frostfall/vide-lib",
+  "name": "frostfall/vide-lib",
   "version": "1.0.0",
   "description": "",
   "main": "out/init.luau",

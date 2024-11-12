@@ -4,12 +4,13 @@ import { useMotion } from "./use-motion";
 
 export function useSpring<T extends MotionGoal>(
 	initialValue: T,
-	goalValue: PartialMotionGoal<T>,
 	valueSource: Source<T>,
 	options?: SpringOptions,
 ) {
 	const motion = useMotion(initialValue, valueSource);
 
-	motion.spring(goalValue, options);
-	return motion;
+	function animate(goal: PartialMotionGoal<T>) {
+		motion.spring(goal, options);
+	}
+	return $tuple(animate);
 }

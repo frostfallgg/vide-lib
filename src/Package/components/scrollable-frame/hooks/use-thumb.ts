@@ -1,28 +1,9 @@
 import { RunService, UserInputService } from "@rbxts/services";
 import { type Source, cleanup, effect, source, untrack } from "@rbxts/vide";
 
-export function useThumb(maximumThumbPosition: Source<number>, isThumbHovered: Source<boolean>) {
+export function useThumb(maximumThumbPosition: Source<number>, isDragging: Source<boolean>) {
 	const thumbPosition = source(new UDim2(0.5, 0, 0, 0));
-	const isDragging = source(false);
 	const isOutsideTrack = source(false);
-
-	function clickListener() {
-		return UserInputService.InputBegan.Connect((input) => {
-			if (input.UserInputType === Enum.UserInputType.MouseButton1) {
-				isDragging(true);
-				isOutsideTrack(false);
-			}
-		});
-	}
-
-	function unclickListener() {
-		return UserInputService.InputEnded.Connect((input) => {
-			if (input.UserInputType === Enum.UserInputType.MouseButton1) {
-				isDragging(false);
-				isOutsideTrack(false);
-			}
-		});
-	}
 
 	function dragHandler() {
 		const startMouse = UserInputService.GetMouseLocation();
@@ -60,19 +41,10 @@ export function useThumb(maximumThumbPosition: Source<number>, isThumbHovered: S
 	}
 
 	effect(() => {
-		if (isThumbHovered()) {
-			const clickCon = clickListener();
-			cleanup(() => clickCon.Disconnect());
-		}
-	});
-
-	effect(() => {
 		if (isDragging()) {
-			const unclickCon = unclickListener();
 			const dragCon = dragHandler();
 			cleanup(() => {
 				dragCon.Disconnect();
-				unclickCon.Disconnect();
 			});
 		}
 	});

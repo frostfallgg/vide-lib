@@ -15,16 +15,10 @@ end
 for _k, _v in TS.import(script, script, "hooks", "use-px") or {} do
 	exports[_k] = _v
 end
-for _k, _v in TS.import(script, script, "hooks", "animation", "use-linear") or {} do
-	exports[_k] = _v
-end
-for _k, _v in TS.import(script, script, "hooks", "animation", "use-spring") or {} do
-	exports[_k] = _v
-end
-for _k, _v in TS.import(script, script, "hooks", "animation", "use-tween") or {} do
-	exports[_k] = _v
-end
 for _k, _v in TS.import(script, script, "hooks", "use-source") or {} do
+	exports[_k] = _v
+end
+for _k, _v in TS.import(script, script, "hooks", "use-spring") or {} do
 	exports[_k] = _v
 end
 -- Custom components
